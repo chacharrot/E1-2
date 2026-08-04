@@ -154,3 +154,6 @@ class QuizGame:
                 print("\n\n비정상 종료 감지. 데이터를 안전하게 저장하고 종료합니다.")
                 self.save_data()
                 break
+
+game = QuizGame()
+game.run()
