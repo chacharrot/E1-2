@@ -59,7 +59,7 @@ class QuizGame:
         except IOError as e:
             print(f"파일 저장 중 오류 발생: {e}")
 
-    def get_safe_input(self, prompt, min_val=None, max_val=None):
+    def get_safe_input(self, prompt, min_val, max_val):
         """공백 제거, 숫자 변환, 범위 체크를 포함한 안전한 입력 함수"""
         while True:
             try:
@@ -69,10 +69,9 @@ class QuizGame:
                     continue
                 
                 val = int(user_input)
-                if min_val is not None and max_val is not None:
-                    if not (min_val <= val <= max_val):
-                        print(f"{min_val}~{max_val} 사이의 숫자를 입력해주세요.")
-                        continue
+                if not (min_val <= val <= max_val):
+                    print(f"{min_val}~{max_val} 사이의 숫자를 입력해주세요.")
+                    continue
                 return val
             except ValueError:
                 print("숫자만 입력 가능합니다. 다시 시도하세요.")
@@ -158,5 +157,6 @@ class QuizGame:
                 self.save_data()
                 break
 
-game = QuizGame()
-game.run()
+if __name__ == "__main__":
+    game = QuizGame()
+    game.run()
