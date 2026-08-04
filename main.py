@@ -17,13 +17,14 @@ class Quiz:
 
 class QuizGame:
     def __init__(self):
+        #파이썬 기본 생성자
         self.file_path = 'state.json'
         self.quizzes = []
         self.best_score = 0
         self.load_data()
 
     def load_data(self):
-        """JSON 파일에서 데이터를 로드하거나 기본 데이터를 설정합니다."""
+        #JSON 파일에서 데이터를 로드하거나 기본 데이터를 설정합니다.
         default_quizzes = [
             Quiz("Python에서 리스트에 요소를 추가하는 함수는?", ["push()", "append()", "add()", "insert_at()"], 2),
             Quiz("Python의 논리형(Boolean) 값이 아닌 것은?", ["True", "False", "None", "둘 다 맞음"], 3),
@@ -48,7 +49,7 @@ class QuizGame:
             self.save_data()
 
     def save_data(self):
-        """현재 상태를 JSON 파일로 저장합니다."""
+        #현재 상태를 JSON 파일로 저장합니다.
         data = {
             "quizzes": [q.to_dict() for q in self.quizzes],
             "best_score": self.best_score
@@ -60,7 +61,7 @@ class QuizGame:
             print(f"파일 저장 중 오류 발생: {e}")
 
     def get_safe_input(self, prompt, min_val, max_val):
-        """공백 제거, 숫자 변환, 범위 체크를 포함한 안전한 입력 함수"""
+        #공백 제거, 숫자 변환, 범위 체크를 포함한 안전한 입력 함수
         while True:
             try:
                 user_input = input(prompt).strip()
