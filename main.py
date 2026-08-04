@@ -128,3 +128,6 @@ class QuizGame:
         for i, q in enumerate(self.quizzes, 1):
             print(f"{i}. {q.question} (정답: {q.answer}번)")
 
+    def show_best_score(self):
+        print(f"\n현재까지의 최고 점수: {self.best_score}점")
+
