@@ -71,3 +71,6 @@ quizzes: Quiz 객체들의 리스트
 
 best_score: int 사용자가 달성한 역대 최고 정답 개수
 ```
+
+
+! 게임실행 화면 (./screenshot/playquiz.png)
