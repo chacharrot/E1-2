@@ -120,3 +120,11 @@ class QuizGame:
         self.save_data()
         print("퀴즈가 성공적으로 추가되었습니다!")
 
+    def show_list(self):
+        print("\n--- 등록된 퀴즈 목록 ---")
+        if not self.quizzes:
+            print("등록된 퀴즈가 없습니다.")
+            return
+        for i, q in enumerate(self.quizzes, 1):
+            print(f"{i}. {q.question} (정답: {q.answer}번)")
+
