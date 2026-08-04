@@ -28,6 +28,7 @@ python main.py
 ```
 
 4. ✨ 핵심 기능
+```
 기능	상세 설명
 퀴즈 풀기	등록된 문제를 4지선다형으로 풀이. 정답 시 점수 획득 및 즉각적인 피드백 제공.
 퀴즈 추가	사용자로부터 문제, 선택지 4개, 정답 번호를 입력받아 새로운 퀴즈 등록.
@@ -35,6 +36,8 @@ python main.py
 최고 점수 관리	역대 최고 점수를 기록하고, 새로운 기록 달성 시 실시간 업데이트 및 저장.
 예외 처리	잘못된 숫자 입력, 빈 칸 입력, Ctrl+C 강제 종료 등에 대한 안전한 방어 코드 적용.
 데이터 영속성	state.json 파일을 통해 프로그램 재시작 후에도 데이터 유지.
+```
+
 5. 📂 파일 구조
 ```text
 .
@@ -60,9 +63,11 @@ python main.py
     "best_score": 5
 }
 ```
+```text
 quizzes: Quiz 객체들의 리스트
 ├── question : string 퀴즈 문제.
-├── choices : list[string] , 문제에 대한 정답 리스트.
-└── answer : int , 정답  정수
+├── choices : list string , 문제에 대한 정답 리스트.
+└── answer : int , 정답 번호
 
-best_score: 사용자가 달성한 역대 최고 정답 개수
+best_score: int 사용자가 달성한 역대 최고 정답 개수
+```
