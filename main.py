@@ -31,3 +31,31 @@ class QuizGame:
             Quiz("다음 중 가변(Mutable) 자료형은?", ["tuple", "str", "list", "int"], 3),
             Quiz("딕셔너리에서 키-값 쌍을 가져오는 메서드는?", ["items()", "keys()", "values()", "get()"], 1)
         ]
+
+        if not os.path.exists(self.file_path):
+            self.quizzes = default_quizzes
+            self.save_data()
+            return
+
+        try:
+            with open(self.file_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                self.quizzes = [Quiz(q['question'], q['choices'], q['answer']) for q in data.get('quizzes', [])]
+                self.best_score = data.get('best_score', 0)
+        except (json.JSONDecodeError, IOError):
+            print("\n[알림] 데이터 파일이 손상되었습니다. 기본 데이터로 복구합니다.")
+            self.quizzes = default_quizzes
+            self.save_data()
+
+    def save_data(self):
+        """현재 상태를 JSON 파일로 저장합니다."""
+        data = {
+            "quizzes": [q.to_dict() for q in self.quizzes],
+            "best_score": self.best_score
+        }
+        try:
+            with open(self.file_path, 'w', encoding='utf-8') as f:
+                json.dump(data, f, ensure_ascii=False, indent=4)
+        except IOError as e:
+            print(f"파일 저장 중 오류 발생: {e}")
+            
