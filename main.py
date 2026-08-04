@@ -131,3 +131,26 @@ class QuizGame:
     def show_best_score(self):
         print(f"\n현재까지의 최고 점수: {self.best_score}점")
 
+    def run(self):
+        while True:
+            try:
+                print("\n=== Python 퀴즈 게임 메뉴 ===")
+                print("1. 퀴즈 풀기")
+                print("2. 퀴즈 추가")
+                print("3. 퀴즈 목록 보기")
+                print("4. 최고 점수 확인")
+                print("5. 종료")
+                
+                choice = self.get_safe_input("메뉴 선택: ", 1, 5)
+
+                if choice == 1: self.play_quiz()
+                elif choice == 2: self.add_quiz()
+                elif choice == 3: self.show_list()
+                elif choice == 4: self.show_best_score()
+                elif choice == 5:
+                    print("게임을 종료합니다. 안녕히 가세요!")
+                    break
+            except (KeyboardInterrupt, EOFError):
+                print("\n\n비정상 종료 감지. 데이터를 안전하게 저장하고 종료합니다.")
+                self.save_data()
+                break
