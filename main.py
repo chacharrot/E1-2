@@ -76,3 +76,29 @@ class QuizGame:
                 return val
             except ValueError:
                 print("숫자만 입력 가능합니다. 다시 시도하세요.")
+
+    def play_quiz(self):
+        if not self.quizzes:
+            print("\n출제할 퀴즈가 없습니다. 퀴즈를 먼저 추가해주세요.")
+            return
+
+        print("\n--- 퀴즈 게임 시작! ---")
+        current_score = 0
+        for i, q in enumerate(self.quizzes, 1):
+            print(f"\nQ{i}. {q.question}")
+            for idx, choice in enumerate(q.choices, 1):
+                print(f"  {idx}) {choice}")
+            
+            answer = self.get_safe_input("정답 번호 선택: ", 1, 4)
+            if answer == q.answer:
+                print("정답입니다! ✨")
+                current_score += 1
+            else:
+                print(f"아쉽네요. 정답은 {q.answer}번입니다.")
+
+        print(f"\n게임 종료! 당신의 점수: {current_score}/{len(self.quizzes)}")
+        if current_score > self.best_score:
+            print(f"축하합니다! 최고 점수 경신! ({self.best_score} -> {current_score})")
+            self.best_score = current_score
+            self.save_data()
+            
