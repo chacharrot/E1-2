@@ -129,7 +129,10 @@ class QuizGame:
             print(f"{i}. {q.question} (정답: {q.answer}번)")
 
     def show_best_score(self):
-        print(f"\n현재까지의 최고 점수: {self.best_score}점")
+        if self.best_score == 0:
+            print("\n아직 기록된 점수가 없습니다. 퀴즈를 풀어보세요!")
+        else:
+            print(f"\n현재까지의 최고 점수: {self.best_score}점")
 
     def run(self):
         while True:
