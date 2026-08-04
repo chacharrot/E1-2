@@ -101,4 +101,22 @@ class QuizGame:
             print(f"축하합니다! 최고 점수 경신! ({self.best_score} -> {current_score})")
             self.best_score = current_score
             self.save_data()
-            
+
+    def add_quiz(self):
+        print("\n--- 새 퀴즈 추가 ---")
+        question = input("문제 내용을 입력하세요: ").strip()
+        while not question:
+            question = input("문제 내용은 필수입니다: ").strip()
+
+        choices = []
+        for i in range(1, 5):
+            choice = input(f"선택지 {i} 입력: ").strip()
+            while not choice:
+                choice = input(f"선택지 {i}는 비어둘 수 없습니다: ").strip()
+            choices.append(choice)
+
+        answer = self.get_safe_input("정답 번호 (1~4): ", 1, 4)
+        self.quizzes.append(Quiz(question, choices, answer))
+        self.save_data()
+        print("퀴즈가 성공적으로 추가되었습니다!")
+
