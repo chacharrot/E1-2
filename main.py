@@ -14,7 +14,8 @@ class Quiz:
             "choices": self.choices,
             "answer": self.answer
         }
-
+    def test(self):
+        return()
 class QuizGame:
     def __init__(self):
         #파이썬 기본 생성자
