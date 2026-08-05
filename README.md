@@ -19,8 +19,8 @@ Python 3.x (표준 라이브러리 json, os만 사용, 외부 설치 불필요)
 실행 방법
 ```bash
 # 저장소 복제
-git clone https://github.com/username/quiz-game.git
-cd quiz-game
+git clone https://github.com/chacharrot/E1-2.git
+cd E1-2
 ```
 ```bash
 # 프로그램 실행
