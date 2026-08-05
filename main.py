@@ -43,7 +43,7 @@ class QuizGame:
                 data = json.load(f)
                 self.quizzes = [Quiz(q['question'], q['choices'], q['answer']) for q in data.get('quizzes', [])]
                 self.best_score = data.get('best_score', 0)
-        except (json.JSONDecodeError, IOError):
+        except (json.JSONDecodeError, IOError, KeyError):
             print("\n[알림] 데이터 파일이 손상되었습니다. 기본 데이터로 복구합니다.")
             self.quizzes = default_quizzes
             self.save_data()
